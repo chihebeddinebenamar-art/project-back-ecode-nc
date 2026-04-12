@@ -12,17 +12,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "accident")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Accident implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -50,4 +42,74 @@ public class Accident implements Serializable {
 
 	@Column(length = 500)
 	private String etat;
+
+	public Accident() {
+	}
+
+	public Accident(Long id, Eleve eleve, LocalDate dateAccident, String description, String diagnostic,
+			String traitement, String etat) {
+		this.id = id;
+		this.eleve = eleve;
+		this.dateAccident = dateAccident;
+		this.description = description;
+		this.diagnostic = diagnostic;
+		this.traitement = traitement;
+		this.etat = etat;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Eleve getEleve() {
+		return eleve;
+	}
+
+	public void setEleve(Eleve eleve) {
+		this.eleve = eleve;
+	}
+
+	public LocalDate getDateAccident() {
+		return dateAccident;
+	}
+
+	public void setDateAccident(LocalDate dateAccident) {
+		this.dateAccident = dateAccident;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDiagnostic() {
+		return diagnostic;
+	}
+
+	public void setDiagnostic(String diagnostic) {
+		this.diagnostic = diagnostic;
+	}
+
+	public String getTraitement() {
+		return traitement;
+	}
+
+	public void setTraitement(String traitement) {
+		this.traitement = traitement;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
 }

@@ -12,17 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "type_vaccin")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class TypeVaccin implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -39,4 +31,46 @@ public class TypeVaccin implements Serializable {
 
 	@OneToMany(mappedBy = "typeVaccin", cascade = CascadeType.ALL)
 	private List<Vaccination> vaccinations = new ArrayList<>();
+
+	public TypeVaccin() {
+	}
+
+	public TypeVaccin(Long id, String nom, int quantiteTotale, List<Vaccination> vaccinations) {
+		this.id = id;
+		this.nom = nom;
+		this.quantiteTotale = quantiteTotale;
+		this.vaccinations = vaccinations;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getQuantiteTotale() {
+		return quantiteTotale;
+	}
+
+	public void setQuantiteTotale(int quantiteTotale) {
+		this.quantiteTotale = quantiteTotale;
+	}
+
+	public List<Vaccination> getVaccinations() {
+		return vaccinations;
+	}
+
+	public void setVaccinations(List<Vaccination> vaccinations) {
+		this.vaccinations = vaccinations;
+	}
 }

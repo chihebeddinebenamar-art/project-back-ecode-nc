@@ -15,17 +15,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.VaccinationDto;
 import tn.educanet.pfe.api.dto.VaccinationRequest;
 import tn.educanet.pfe.service.VaccinationService;
 
 @RestController
 @RequestMapping("/api/vaccinations")
-@RequiredArgsConstructor
 public class VaccinationApiController {
 
 	private final VaccinationService vaccinationService;
+
+	public VaccinationApiController(VaccinationService vaccinationService) {
+		this.vaccinationService = vaccinationService;
+	}
 
 	/**
 	 * Sans {@code eleveId} : liste globale avec filtres optionnels (niveau, classe, type, q nom/prénom/matricule, numeroLot).

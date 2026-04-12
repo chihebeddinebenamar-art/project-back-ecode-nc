@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.TypeVaccinDto;
 import tn.educanet.pfe.api.dto.TypeVaccinRequest;
 import tn.educanet.pfe.service.TypeVaccinService;
 
 @RestController
 @RequestMapping("/api/vaccins/types")
-@RequiredArgsConstructor
 public class TypeVaccinApiController {
 
 	private final TypeVaccinService typeVaccinService;
+
+	public TypeVaccinApiController(TypeVaccinService typeVaccinService) {
+		this.typeVaccinService = typeVaccinService;
+	}
 
 	@GetMapping
 	public List<TypeVaccinDto> lister() {

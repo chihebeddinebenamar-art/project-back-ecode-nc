@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.AccidentDto;
 import tn.educanet.pfe.api.dto.AccidentRequest;
 import tn.educanet.pfe.exception.BusinessException;
@@ -17,11 +16,15 @@ import tn.educanet.pfe.service.AccidentService;
 import tn.educanet.pfe.specification.AccidentSpecification;
 
 @Service
-@RequiredArgsConstructor
 public class AccidentServiceImpl implements AccidentService {
 
 	private final AccidentRepository accidentRepository;
 	private final EleveRepository eleveRepository;
+
+	public AccidentServiceImpl(AccidentRepository accidentRepository, EleveRepository eleveRepository) {
+		this.accidentRepository = accidentRepository;
+		this.eleveRepository = eleveRepository;
+	}
 
 	@Override
 	@Transactional(readOnly = true)

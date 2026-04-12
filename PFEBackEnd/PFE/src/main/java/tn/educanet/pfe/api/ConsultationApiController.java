@@ -15,17 +15,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.ConsultationDto;
 import tn.educanet.pfe.api.dto.ConsultationRequest;
 import tn.educanet.pfe.service.ConsultationService;
 
 @RestController
 @RequestMapping("/api/consultations")
-@RequiredArgsConstructor
 public class ConsultationApiController {
 
 	private final ConsultationService consultationService;
+
+	public ConsultationApiController(ConsultationService consultationService) {
+		this.consultationService = consultationService;
+	}
 
 	/**
 	 * Sans {@code eleveId} : liste globale avec filtres optionnels (niveau, classe, recherche nom/prénom/matricule).

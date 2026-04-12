@@ -2,14 +2,8 @@ package tn.educanet.pfe.api.dto;
 
 import java.time.LocalDate;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import tn.educanet.pfe.persistence.Accident;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class AccidentDto {
 
 	private Long id;
@@ -23,6 +17,23 @@ public class AccidentDto {
 	private String diagnostic;
 	private String traitement;
 	private String etat;
+
+	public AccidentDto() {
+	}
+
+	public AccidentDto(Long id, Long eleveId, String eleveNomComplet, String classeNom, String niveauNom,
+			LocalDate dateAccident, String description, String diagnostic, String traitement, String etat) {
+		this.id = id;
+		this.eleveId = eleveId;
+		this.eleveNomComplet = eleveNomComplet;
+		this.classeNom = classeNom;
+		this.niveauNom = niveauNom;
+		this.dateAccident = dateAccident;
+		this.description = description;
+		this.diagnostic = diagnostic;
+		this.traitement = traitement;
+		this.etat = etat;
+	}
 
 	public static AccidentDto from(Accident a) {
 		var e = a.getEleve();
@@ -38,5 +49,85 @@ public class AccidentDto {
 		}
 		return new AccidentDto(a.getId(), e.getId(), nom, cn, nn, a.getDateAccident(), a.getDescription(),
 				a.getDiagnostic(), a.getTraitement(), a.getEtat());
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getEleveId() {
+		return eleveId;
+	}
+
+	public void setEleveId(Long eleveId) {
+		this.eleveId = eleveId;
+	}
+
+	public String getEleveNomComplet() {
+		return eleveNomComplet;
+	}
+
+	public void setEleveNomComplet(String eleveNomComplet) {
+		this.eleveNomComplet = eleveNomComplet;
+	}
+
+	public String getClasseNom() {
+		return classeNom;
+	}
+
+	public void setClasseNom(String classeNom) {
+		this.classeNom = classeNom;
+	}
+
+	public String getNiveauNom() {
+		return niveauNom;
+	}
+
+	public void setNiveauNom(String niveauNom) {
+		this.niveauNom = niveauNom;
+	}
+
+	public LocalDate getDateAccident() {
+		return dateAccident;
+	}
+
+	public void setDateAccident(LocalDate dateAccident) {
+		this.dateAccident = dateAccident;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDiagnostic() {
+		return diagnostic;
+	}
+
+	public void setDiagnostic(String diagnostic) {
+		this.diagnostic = diagnostic;
+	}
+
+	public String getTraitement() {
+		return traitement;
+	}
+
+	public void setTraitement(String traitement) {
+		this.traitement = traitement;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 }

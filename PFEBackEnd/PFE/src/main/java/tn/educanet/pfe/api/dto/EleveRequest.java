@@ -4,9 +4,7 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
-@Data
 public class EleveRequest {
 
 	private String matricule;
@@ -17,4 +15,47 @@ public class EleveRequest {
 	private LocalDate dateNaissance;
 	@NotNull
 	private Long classeId;
+
+	public EleveRequest() {
+	}
+
+	public String getMatricule() {
+		return matricule;
+	}
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public Long getClasseId() {
+		return classeId;
+	}
+
+	public void setClasseId(Long classeId) {
+		this.classeId = classeId;
+	}
 }

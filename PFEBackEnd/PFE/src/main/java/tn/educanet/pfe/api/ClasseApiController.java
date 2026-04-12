@@ -15,17 +15,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.ClasseDto;
 import tn.educanet.pfe.api.dto.ClasseRequest;
 import tn.educanet.pfe.service.ClasseService;
 
 @RestController
 @RequestMapping("/api/classes")
-@RequiredArgsConstructor
 public class ClasseApiController {
 
 	private final ClasseService classeService;
+
+	public ClasseApiController(ClasseService classeService) {
+		this.classeService = classeService;
+	}
 
 	@GetMapping
 	public List<ClasseDto> lister(@RequestParam(required = false) Long niveauId,

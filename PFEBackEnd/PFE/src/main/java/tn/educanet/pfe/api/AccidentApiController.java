@@ -15,17 +15,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.AccidentDto;
 import tn.educanet.pfe.api.dto.AccidentRequest;
 import tn.educanet.pfe.service.AccidentService;
 
 @RestController
 @RequestMapping("/api/accidents")
-@RequiredArgsConstructor
 public class AccidentApiController {
 
 	private final AccidentService accidentService;
+
+	public AccidentApiController(AccidentService accidentService) {
+		this.accidentService = accidentService;
+	}
 
 	/**
 	 * Sans {@code eleveId} : liste globale avec filtres optionnels (niveau, classe, recherche nom/prénom/matricule).

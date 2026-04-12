@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.VaccinationDto;
 import tn.educanet.pfe.api.dto.VaccinationRequest;
 import tn.educanet.pfe.exception.BusinessException;
@@ -19,12 +18,18 @@ import tn.educanet.pfe.repository.VaccinationRepository;
 import tn.educanet.pfe.service.VaccinationService;
 
 @Service
-@RequiredArgsConstructor
 public class VaccinationServiceImpl implements VaccinationService {
 
 	private final VaccinationRepository vaccinationRepository;
 	private final EleveRepository eleveRepository;
 	private final TypeVaccinRepository typeVaccinRepository;
+
+	public VaccinationServiceImpl(VaccinationRepository vaccinationRepository, EleveRepository eleveRepository,
+			TypeVaccinRepository typeVaccinRepository) {
+		this.vaccinationRepository = vaccinationRepository;
+		this.eleveRepository = eleveRepository;
+		this.typeVaccinRepository = typeVaccinRepository;
+	}
 
 	@Override
 	@Transactional(readOnly = true)

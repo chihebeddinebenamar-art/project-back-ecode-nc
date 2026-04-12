@@ -15,17 +15,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.NiveauDto;
 import tn.educanet.pfe.api.dto.NiveauRequest;
 import tn.educanet.pfe.service.NiveauService;
 
 @RestController
 @RequestMapping("/api/niveaux")
-@RequiredArgsConstructor
 public class NiveauApiController {
 
 	private final NiveauService niveauService;
+
+	public NiveauApiController(NiveauService niveauService) {
+		this.niveauService = niveauService;
+	}
 
 	@GetMapping
 	public List<NiveauDto> lister(@RequestParam(required = false) String annee,

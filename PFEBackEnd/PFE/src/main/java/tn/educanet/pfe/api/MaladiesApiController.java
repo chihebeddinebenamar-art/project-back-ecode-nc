@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.MaladieEleveListDto;
 import tn.educanet.pfe.service.EleveMaladieService;
 
@@ -16,10 +15,13 @@ import tn.educanet.pfe.service.EleveMaladieService;
  */
 @RestController
 @RequestMapping("/api/maladies")
-@RequiredArgsConstructor
 public class MaladiesApiController {
 
 	private final EleveMaladieService eleveMaladieService;
+
+	public MaladiesApiController(EleveMaladieService eleveMaladieService) {
+		this.eleveMaladieService = eleveMaladieService;
+	}
 
 	@GetMapping
 	public List<MaladieEleveListDto> lister(@RequestParam(required = false) Long niveauId,

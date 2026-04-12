@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.NiveauDto;
 import tn.educanet.pfe.api.dto.NiveauRequest;
 import tn.educanet.pfe.exception.BusinessException;
@@ -15,10 +14,13 @@ import tn.educanet.pfe.service.NiveauService;
 import tn.educanet.pfe.specification.NiveauSpecification;
 
 @Service
-@RequiredArgsConstructor
 public class NiveauServiceImpl implements NiveauService {
 
 	private final NiveauRepository niveauRepository;
+
+	public NiveauServiceImpl(NiveauRepository niveauRepository) {
+		this.niveauRepository = niveauRepository;
+	}
 
 	@Override
 	@Transactional(readOnly = true)

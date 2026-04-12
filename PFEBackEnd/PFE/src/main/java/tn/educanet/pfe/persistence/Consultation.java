@@ -12,17 +12,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "consultation")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Consultation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -57,4 +49,92 @@ public class Consultation implements Serializable {
 	/** Soins / médicaments prescrits (obligatoire en saisie). Colonne SQL historique {@code note}. */
 	@Column(name = "note", length = 2000)
 	private String traitement;
+
+	public Consultation() {
+	}
+
+	public Consultation(Long id, Eleve eleve, LocalDate dateConsultation, Double temperature, boolean vomissement,
+			boolean diarrhee, String rapport, LocalDate prochaineConsultation, String traitement) {
+		this.id = id;
+		this.eleve = eleve;
+		this.dateConsultation = dateConsultation;
+		this.temperature = temperature;
+		this.vomissement = vomissement;
+		this.diarrhee = diarrhee;
+		this.rapport = rapport;
+		this.prochaineConsultation = prochaineConsultation;
+		this.traitement = traitement;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Eleve getEleve() {
+		return eleve;
+	}
+
+	public void setEleve(Eleve eleve) {
+		this.eleve = eleve;
+	}
+
+	public LocalDate getDateConsultation() {
+		return dateConsultation;
+	}
+
+	public void setDateConsultation(LocalDate dateConsultation) {
+		this.dateConsultation = dateConsultation;
+	}
+
+	public Double getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Double temperature) {
+		this.temperature = temperature;
+	}
+
+	public boolean isVomissement() {
+		return vomissement;
+	}
+
+	public void setVomissement(boolean vomissement) {
+		this.vomissement = vomissement;
+	}
+
+	public boolean isDiarrhee() {
+		return diarrhee;
+	}
+
+	public void setDiarrhee(boolean diarrhee) {
+		this.diarrhee = diarrhee;
+	}
+
+	public String getRapport() {
+		return rapport;
+	}
+
+	public void setRapport(String rapport) {
+		this.rapport = rapport;
+	}
+
+	public LocalDate getProchaineConsultation() {
+		return prochaineConsultation;
+	}
+
+	public void setProchaineConsultation(LocalDate prochaineConsultation) {
+		this.prochaineConsultation = prochaineConsultation;
+	}
+
+	public String getTraitement() {
+		return traitement;
+	}
+
+	public void setTraitement(String traitement) {
+		this.traitement = traitement;
+	}
 }

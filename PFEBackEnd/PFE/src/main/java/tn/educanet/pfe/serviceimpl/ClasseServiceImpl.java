@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.ClasseDto;
 import tn.educanet.pfe.api.dto.ClasseRequest;
 import tn.educanet.pfe.exception.BusinessException;
@@ -18,11 +17,15 @@ import tn.educanet.pfe.repository.NiveauRepository;
 import tn.educanet.pfe.service.ClasseService;
 
 @Service
-@RequiredArgsConstructor
 public class ClasseServiceImpl implements ClasseService {
 
 	private final ClasseRepository classeRepository;
 	private final NiveauRepository niveauRepository;
+
+	public ClasseServiceImpl(ClasseRepository classeRepository, NiveauRepository niveauRepository) {
+		this.classeRepository = classeRepository;
+		this.niveauRepository = niveauRepository;
+	}
 
 	private static int niveauOrdrePourColonneLegacy(Niveau niveau) {
 		Long id = niveau.getId();

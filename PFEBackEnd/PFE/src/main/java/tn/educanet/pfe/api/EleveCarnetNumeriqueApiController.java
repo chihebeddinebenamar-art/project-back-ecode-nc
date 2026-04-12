@@ -15,16 +15,18 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.CarnetNumeriqueUploadRequest;
 import tn.educanet.pfe.service.EleveCarnetNumeriqueService;
 
 @RestController
 @RequestMapping("/api/eleves/{eleveId}/carnet-numerique")
-@RequiredArgsConstructor
 public class EleveCarnetNumeriqueApiController {
 
 	private final EleveCarnetNumeriqueService eleveCarnetNumeriqueService;
+
+	public EleveCarnetNumeriqueApiController(EleveCarnetNumeriqueService eleveCarnetNumeriqueService) {
+		this.eleveCarnetNumeriqueService = eleveCarnetNumeriqueService;
+	}
 
 	@GetMapping("/image")
 	public ResponseEntity<byte[]> image(@PathVariable Long eleveId) {

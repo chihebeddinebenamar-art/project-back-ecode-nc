@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.MaladieEleveDto;
 import tn.educanet.pfe.api.dto.MaladieEleveRequest;
 import tn.educanet.pfe.service.EleveMaladieService;
 
 @RestController
 @RequestMapping("/api/eleves/{eleveId}/maladies")
-@RequiredArgsConstructor
 public class EleveMaladieApiController {
 
 	private final EleveMaladieService eleveMaladieService;
+
+	public EleveMaladieApiController(EleveMaladieService eleveMaladieService) {
+		this.eleveMaladieService = eleveMaladieService;
+	}
 
 	@GetMapping
 	public List<MaladieEleveDto> lister(@PathVariable Long eleveId) {

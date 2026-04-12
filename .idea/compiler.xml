@@ -2,16 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <!-- Désactivé : un profil « Default » activé sans chemins explicites peut lancer des processors
-           depuis le classpath (ex. anciens artefacts) et régénérer des *_.java obsolètes sous target/generated-sources/apt -->
-      <profile default="true" name="Default" enabled="false" />
-      <profile name="Annotation profile for PFE" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
         <module name="PFE" />
       </profile>
     </annotationProcessing>

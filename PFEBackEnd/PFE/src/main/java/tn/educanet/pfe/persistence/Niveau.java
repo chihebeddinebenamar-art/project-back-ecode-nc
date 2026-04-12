@@ -12,17 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "niveau")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Niveau implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -39,4 +31,46 @@ public class Niveau implements Serializable {
 
 	@OneToMany(mappedBy = "niveau", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Classe> classes = new ArrayList<>();
+
+	public Niveau() {
+	}
+
+	public Niveau(Long id, String nom, String anneeScolaire, List<Classe> classes) {
+		this.id = id;
+		this.nom = nom;
+		this.anneeScolaire = anneeScolaire;
+		this.classes = classes;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getAnneeScolaire() {
+		return anneeScolaire;
+	}
+
+	public void setAnneeScolaire(String anneeScolaire) {
+		this.anneeScolaire = anneeScolaire;
+	}
+
+	public List<Classe> getClasses() {
+		return classes;
+	}
+
+	public void setClasses(List<Classe> classes) {
+		this.classes = classes;
+	}
 }

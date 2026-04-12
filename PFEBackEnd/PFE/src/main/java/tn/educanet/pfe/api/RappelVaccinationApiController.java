@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.RappelVaccinationDto;
 import tn.educanet.pfe.api.dto.RappelVaccinationRequest;
 import tn.educanet.pfe.service.RappelVaccinationService;
 
 @RestController
 @RequestMapping("/api/rappels-vaccination")
-@RequiredArgsConstructor
 public class RappelVaccinationApiController {
 
 	private final RappelVaccinationService rappelVaccinationService;
+
+	public RappelVaccinationApiController(RappelVaccinationService rappelVaccinationService) {
+		this.rappelVaccinationService = rappelVaccinationService;
+	}
 
 	@GetMapping
 	public List<RappelVaccinationDto> lister() {

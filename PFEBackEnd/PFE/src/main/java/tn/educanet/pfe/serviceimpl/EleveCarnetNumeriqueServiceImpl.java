@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.CarnetNumeriqueUploadRequest;
 import tn.educanet.pfe.exception.BusinessException;
 import tn.educanet.pfe.persistence.Eleve;
@@ -25,13 +24,18 @@ import tn.educanet.pfe.repository.EleveRepository;
 import tn.educanet.pfe.service.EleveCarnetNumeriqueService;
 
 @Service
-@RequiredArgsConstructor
 public class EleveCarnetNumeriqueServiceImpl implements EleveCarnetNumeriqueService {
 
 	private static final int MAX_BYTES = 6 * 1024 * 1024;
 
 	private final EleveRepository eleveRepository;
 	private final EleveCarnetNumeriqueRepository carnetNumeriqueRepository;
+
+	public EleveCarnetNumeriqueServiceImpl(EleveRepository eleveRepository,
+			EleveCarnetNumeriqueRepository carnetNumeriqueRepository) {
+		this.eleveRepository = eleveRepository;
+		this.carnetNumeriqueRepository = carnetNumeriqueRepository;
+	}
 
 	@Value("${app.carnet-numerique.dir:uploads/carnet-numerique}")
 	private String storageDirProperty;

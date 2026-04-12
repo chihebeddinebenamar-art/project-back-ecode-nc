@@ -101,12 +101,6 @@
 			<version>2.19.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>33.1.0-jre</version> <!-- latest as of 2025 -->
@@ -173,18 +167,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<!-- Aligné sur java.version (21) — ne pas utiliser -proc:none : cela désactive Lombok -->
 					<release>${java.version}</release>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
-					<!-- Lombok uniquement : pas de hibernate-jpamodelgen (évite doublons APT + erreurs Filer sous IntelliJ) -->
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-							<version>${lombok.version}</version>
-						</path>
-					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 			<plugin>

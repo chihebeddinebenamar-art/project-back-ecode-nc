@@ -19,17 +19,8 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 @Entity
 @Table(name = "classe")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Classe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -56,4 +47,55 @@ public class Classe implements Serializable {
 
 	@OneToMany(mappedBy = "classe", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Eleve> eleves = new ArrayList<>();
+
+	public Classe() {
+	}
+
+	public Classe(Long id, String nom, int niveauOrdre, Niveau niveau, List<Eleve> eleves) {
+		this.id = id;
+		this.nom = nom;
+		this.niveauOrdre = niveauOrdre;
+		this.niveau = niveau;
+		this.eleves = eleves;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getNiveauOrdre() {
+		return niveauOrdre;
+	}
+
+	public void setNiveauOrdre(int niveauOrdre) {
+		this.niveauOrdre = niveauOrdre;
+	}
+
+	public Niveau getNiveau() {
+		return niveau;
+	}
+
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
+	}
+
+	public List<Eleve> getEleves() {
+		return eleves;
+	}
+
+	public void setEleves(List<Eleve> eleves) {
+		this.eleves = eleves;
+	}
 }

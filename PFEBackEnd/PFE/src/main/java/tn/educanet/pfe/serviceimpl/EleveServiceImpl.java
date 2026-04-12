@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.AccidentDto;
 import tn.educanet.pfe.api.dto.ConsultationDto;
 import tn.educanet.pfe.api.dto.EleveDto;
@@ -28,7 +27,6 @@ import tn.educanet.pfe.service.EleveService;
 import tn.educanet.pfe.specification.EleveSpecification;
 
 @Service
-@RequiredArgsConstructor
 public class EleveServiceImpl implements EleveService {
 
 	private final EleveRepository eleveRepository;
@@ -39,6 +37,21 @@ public class EleveServiceImpl implements EleveService {
 	private final EleveMaladieRepository eleveMaladieRepository;
 	private final EleveCarnetNumeriqueRepository eleveCarnetNumeriqueRepository;
 	private final EleveCarnetNumeriqueService eleveCarnetNumeriqueService;
+
+	public EleveServiceImpl(EleveRepository eleveRepository, ClasseRepository classeRepository,
+			VaccinationRepository vaccinationRepository, ConsultationRepository consultationRepository,
+			AccidentRepository accidentRepository, EleveMaladieRepository eleveMaladieRepository,
+			EleveCarnetNumeriqueRepository eleveCarnetNumeriqueRepository,
+			EleveCarnetNumeriqueService eleveCarnetNumeriqueService) {
+		this.eleveRepository = eleveRepository;
+		this.classeRepository = classeRepository;
+		this.vaccinationRepository = vaccinationRepository;
+		this.consultationRepository = consultationRepository;
+		this.accidentRepository = accidentRepository;
+		this.eleveMaladieRepository = eleveMaladieRepository;
+		this.eleveCarnetNumeriqueRepository = eleveCarnetNumeriqueRepository;
+		this.eleveCarnetNumeriqueService = eleveCarnetNumeriqueService;
+	}
 
 	@Override
 	@Transactional(readOnly = true)

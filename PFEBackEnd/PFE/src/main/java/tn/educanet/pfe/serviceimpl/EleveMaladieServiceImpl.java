@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.MaladieEleveDto;
 import tn.educanet.pfe.api.dto.MaladieEleveListDto;
 import tn.educanet.pfe.api.dto.MaladieEleveRequest;
@@ -18,11 +17,15 @@ import tn.educanet.pfe.service.EleveMaladieService;
 import tn.educanet.pfe.specification.EleveMaladieSpecification;
 
 @Service
-@RequiredArgsConstructor
 public class EleveMaladieServiceImpl implements EleveMaladieService {
 
 	private final EleveRepository eleveRepository;
 	private final EleveMaladieRepository eleveMaladieRepository;
+
+	public EleveMaladieServiceImpl(EleveRepository eleveRepository, EleveMaladieRepository eleveMaladieRepository) {
+		this.eleveRepository = eleveRepository;
+		this.eleveMaladieRepository = eleveMaladieRepository;
+	}
 
 	@Override
 	@Transactional(readOnly = true)

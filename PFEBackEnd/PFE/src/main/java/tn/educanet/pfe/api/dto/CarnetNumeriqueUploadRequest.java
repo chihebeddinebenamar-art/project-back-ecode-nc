@@ -1,9 +1,7 @@
 package tn.educanet.pfe.api.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 
-@Data
 public class CarnetNumeriqueUploadRequest {
 
 	/**
@@ -11,4 +9,15 @@ public class CarnetNumeriqueUploadRequest {
 	 */
 	@NotBlank
 	private String image;
+
+	public CarnetNumeriqueUploadRequest() {
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 }

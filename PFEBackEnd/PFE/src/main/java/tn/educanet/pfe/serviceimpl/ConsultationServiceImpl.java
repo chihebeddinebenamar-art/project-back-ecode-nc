@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.ConsultationDto;
 import tn.educanet.pfe.api.dto.ConsultationRequest;
 import tn.educanet.pfe.exception.BusinessException;
@@ -17,11 +16,15 @@ import tn.educanet.pfe.service.ConsultationService;
 import tn.educanet.pfe.specification.ConsultationSpecification;
 
 @Service
-@RequiredArgsConstructor
 public class ConsultationServiceImpl implements ConsultationService {
 
 	private final ConsultationRepository consultationRepository;
 	private final EleveRepository eleveRepository;
+
+	public ConsultationServiceImpl(ConsultationRepository consultationRepository, EleveRepository eleveRepository) {
+		this.consultationRepository = consultationRepository;
+		this.eleveRepository = eleveRepository;
+	}
 
 	@Override
 	@Transactional(readOnly = true)

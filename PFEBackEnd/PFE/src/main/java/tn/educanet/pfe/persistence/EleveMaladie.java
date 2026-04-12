@@ -13,17 +13,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "eleve_maladie")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class EleveMaladie implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -45,4 +37,55 @@ public class EleveMaladie implements Serializable {
 
 	@Column(length = 2000)
 	private String details;
+
+	public EleveMaladie() {
+	}
+
+	public EleveMaladie(Long id, Eleve eleve, TypeMaladieEleve type, String libelle, String details) {
+		this.id = id;
+		this.eleve = eleve;
+		this.type = type;
+		this.libelle = libelle;
+		this.details = details;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Eleve getEleve() {
+		return eleve;
+	}
+
+	public void setEleve(Eleve eleve) {
+		this.eleve = eleve;
+	}
+
+	public TypeMaladieEleve getType() {
+		return type;
+	}
+
+	public void setType(TypeMaladieEleve type) {
+		this.type = type;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import tn.educanet.pfe.api.dto.EleveDto;
 import tn.educanet.pfe.api.dto.EleveRequest;
 import tn.educanet.pfe.api.dto.FicheMedicaleDto;
@@ -23,10 +22,13 @@ import tn.educanet.pfe.service.EleveService;
 
 @RestController
 @RequestMapping("/api/eleves")
-@RequiredArgsConstructor
 public class EleveApiController {
 
 	private final EleveService eleveService;
+
+	public EleveApiController(EleveService eleveService) {
+		this.eleveService = eleveService;
+	}
 
 	@GetMapping
 	public List<EleveDto> lister(@RequestParam(required = false) Long niveauId,
